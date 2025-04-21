@@ -1,81 +1,71 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recensioni Clienti</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recensioni | Azienda</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <header class="site-header">
-        <div class="container">
-            <img src="logo-fake.png" alt="Logo Fake" class="logo">
-            <h1>Le opinioni dei nostri clienti</h1>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container">
+      <img src="logo.png" alt="Logo" class="logo"/>
+      <h1>Recensioni dei nostri clienti</h1>
+    </div>
+  </header>
 
-    <section class="summary-section container">
-        <div class="average-score">
-            <h2>4.6 su 5</h2>
-            <div class="stars">★★★★☆</div>
-            <p>Basato su 1.234 recensioni</p>
-        </div>
-        <div class="distribution-bars">
-            <div class="bar-row"><span>5 stelle</span><div class="bar"><div class="fill" style="width: 70%"></div></div></div>
-            <div class="bar-row"><span>4 stelle</span><div class="bar"><div class="fill" style="width: 20%"></div></div></div>
-            <div class="bar-row"><span>3 stelle</span><div class="bar"><div class="fill" style="width: 5%"></div></div></div>
-            <div class="bar-row"><span>2 stelle</span><div class="bar"><div class="fill" style="width: 3%"></div></div></div>
-            <div class="bar-row"><span>1 stella</span><div class="bar"><div class="fill" style="width: 2%"></div></div></div>
-        </div>
-    </section>
+  <section class="summary">
+    <div class="container">
+      <div class="average">
+        <div class="stars">★★★★☆</div>
+        <div class="rating-value">4.2/5</div>
+        <div class="total-reviews">Basato su 1257 recensioni</div>
+      </div>
+      <div class="distribution">
+        <div class="bar"><span>5 stelle</span><div><div style="width: 65%;"></div></div><span>821</span></div>
+        <div class="bar"><span>4 stelle</span><div><div style="width: 20%;"></div></div><span>251</span></div>
+        <div class="bar"><span>3 stelle</span><div><div style="width: 10%;"></div></div><span>125</span></div>
+        <div class="bar"><span>2 stelle</span><div><div style="width: 3%;"></div></div><span>38</span></div>
+        <div class="bar"><span>1 stella</span><div><div style="width: 2%;"></div></div><span>22</span></div>
+      </div>
+    </div>
+  </section>
 
-    <section class="filters container">
-        <label>Filtra per stelle:
-            <select>
-                <option value="all">Tutte</option>
-                <option value="5">5 stelle</option>
-                <option value="4">4 stelle</option>
-                <option value="3">3 stelle</option>
-                <option value="2">2 stelle</option>
-                <option value="1">1 stella</option>
-            </select>
-        </label>
-        <label>Data:
-            <select>
-                <option value="recent">Più recenti</option>
-                <option value="oldest">Meno recenti</option>
-            </select>
-        </label>
-        <label>Categoria:
-            <select>
-                <option value="tutte">Tutte</option>
-                <option value="servizio">Servizio</option>
-                <option value="struttura">Struttura</option>
-            </select>
-        </label>
-    </section>
+  <section class="filters container">
+    <label>Filtra per stelle:
+      <select id="filterStars">
+        <option value="all">Tutte</option>
+        <option value="5">5 stelle</option>
+        <option value="4">4 stelle</option>
+        <option value="3">3 stelle</option>
+        <option value="2">2 stelle</option>
+        <option value="1">1 stella</option>
+      </select>
+    </label>
+    <label>Filtra per data:
+      <select id="filterDate">
+        <option value="latest">Più recenti</option>
+        <option value="oldest">Meno recenti</option>
+      </select>
+    </label>
+    <label>Filtra per categoria:
+      <select id="filterCategory">
+        <option value="all">Tutte</option>
+        <option value="servizio">Servizio</option>
+        <option value="prodotto">Prodotto</option>
+        <option value="struttura">Struttura</option>
+      </select>
+    </label>
+  </section>
 
-    <section class="reviews container">
-        <div class="review">
-            <h3>Mario Rossi <span class="date">20 Aprile 2025</span></h3>
-            <div class="stars">★★★★★</div>
-            <p>Esperienza fantastica! Il servizio è stato impeccabile e la struttura davvero accogliente. 
-               Ci tornerò sicuramente. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec condimentum quam.</p>
-        </div>
-        <div class="review">
-            <h3>Luca Bianchi <span class="date">18 Aprile 2025</span></h3>
-            <div class="stars">★★★★☆</div>
-            <p>Buon servizio ma la struttura poteva essere più curata. Il personale è stato gentile e disponibile.</p>
-        </div>
-        <!-- altre recensioni qui -->
-        <button class="load-more">Vedi tutte le recensioni</button>
-    </section>
+  <section class="reviews container" id="reviews">
+    <!-- Le recensioni saranno aggiunte via JS -->
+  </section>
 
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; 2025 - Demo Recensioni</p>
-        </div>
-    </footer>
+  <footer class="container">
+    <button id="loadMore">Vedi tutte le recensioni</button>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
