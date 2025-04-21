@@ -4,36 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recensioni - PS</title>
+    <title>Recensioni Clienti</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="header">
-        <img src="https://via.placeholder.com/100x40?text=LOGO" alt="Logo" class="logo">
-        <h1>Recensioni</h1>
+    <header class="site-header">
+        <div class="container">
+            <img src="logo-fake.png" alt="Logo Fake" class="logo">
+            <h1>Le opinioni dei nostri clienti</h1>
+        </div>
     </header>
 
-    <section class="hero">
-        <div class="rating-summary">
-            <div class="average-rating">
-                <div class="stars">★★★★★</div>
-                <div class="score">4.6 su 5</div>
-            </div>
-            <div class="total-reviews">Basato su 235 recensioni</div>
+    <section class="summary-section container">
+        <div class="average-score">
+            <h2>4.6 su 5</h2>
+            <div class="stars">★★★★☆</div>
+            <p>Basato su 1.234 recensioni</p>
         </div>
-        <div class="rating-distribution">
-            <div class="bar"><span>5 stelle</span><div class="progress"><div style="width: 70%;"></div></div></div>
-            <div class="bar"><span>4 stelle</span><div class="progress"><div style="width: 20%;"></div></div></div>
-            <div class="bar"><span>3 stelle</span><div class="progress"><div style="width: 5%;"></div></div></div>
-            <div class="bar"><span>2 stelle</span><div class="progress"><div style="width: 3%;"></div></div></div>
-            <div class="bar"><span>1 stella</span><div class="progress"><div style="width: 2%;"></div></div></div>
+        <div class="distribution-bars">
+            <div class="bar-row"><span>5 stelle</span><div class="bar"><div class="fill" style="width: 70%"></div></div></div>
+            <div class="bar-row"><span>4 stelle</span><div class="bar"><div class="fill" style="width: 20%"></div></div></div>
+            <div class="bar-row"><span>3 stelle</span><div class="bar"><div class="fill" style="width: 5%"></div></div></div>
+            <div class="bar-row"><span>2 stelle</span><div class="bar"><div class="fill" style="width: 3%"></div></div></div>
+            <div class="bar-row"><span>1 stella</span><div class="bar"><div class="fill" style="width: 2%"></div></div></div>
         </div>
     </section>
 
-    <section class="filters">
+    <section class="filters container">
         <label>Filtra per stelle:
-            <select id="filterStars" onchange="applyFilters()">
-                <option value="">Tutte</option>
+            <select>
+                <option value="all">Tutte</option>
                 <option value="5">5 stelle</option>
                 <option value="4">4 stelle</option>
                 <option value="3">3 stelle</option>
@@ -41,55 +41,41 @@
                 <option value="1">1 stella</option>
             </select>
         </label>
-        <label>Filtra per categoria:
-            <select id="filterCategory" onchange="applyFilters()">
-                <option value="">Tutte</option>
-                <option value="Servizio">Servizio</option>
-                <option value="Struttura">Struttura</option>
+        <label>Data:
+            <select>
+                <option value="recent">Più recenti</option>
+                <option value="oldest">Meno recenti</option>
+            </select>
+        </label>
+        <label>Categoria:
+            <select>
+                <option value="tutte">Tutte</option>
+                <option value="servizio">Servizio</option>
+                <option value="struttura">Struttura</option>
             </select>
         </label>
     </section>
 
-    <section id="reviews" class="reviews">
-        <!-- Recensioni saranno generate dinamicamente -->
+    <section class="reviews container">
+        <div class="review">
+            <h3>Mario Rossi <span class="date">20 Aprile 2025</span></h3>
+            <div class="stars">★★★★★</div>
+            <p>Esperienza fantastica! Il servizio è stato impeccabile e la struttura davvero accogliente. 
+               Ci tornerò sicuramente. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec condimentum quam.</p>
+        </div>
+        <div class="review">
+            <h3>Luca Bianchi <span class="date">18 Aprile 2025</span></h3>
+            <div class="stars">★★★★☆</div>
+            <p>Buon servizio ma la struttura poteva essere più curata. Il personale è stato gentile e disponibile.</p>
+        </div>
+        <!-- altre recensioni qui -->
+        <button class="load-more">Vedi tutte le recensioni</button>
     </section>
 
-    <script>
-        const reviews = [
-            { name: "Luca", date: "2024-04-10", stars: 5, category: "Servizio", content: "Esperienza eccellente!" },
-            { name: "Anna", date: "2024-04-07", stars: 4, category: "Struttura", content: "Molto bella ma si può migliorare." },
-            { name: "Marco", date: "2024-04-02", stars: 3, category: "Servizio", content: "Sufficiente, ma qualche problema." },
-            { name: "Giulia", date: "2024-03-28", stars: 5, category: "Struttura", content: "Tutto perfetto, raccomando!" },
-            { name: "Davide", date: "2024-03-20", stars: 1, category: "Servizio", content: "Deluso dall'assistenza." },
-        ];
-
-        function renderReviews(filtered = reviews) {
-            const container = document.getElementById("reviews");
-            container.innerHTML = "";
-            filtered.forEach(r => {
-                container.innerHTML += `
-                    <div class="review">
-                        <div class="review-header">
-                            <strong>${r.name}</strong> - <small>${r.date}</small>
-                        </div>
-                        <div class="review-rating">${"★".repeat(r.stars)}${"☆".repeat(5 - r.stars)} (${r.stars})</div>
-                        <p>${r.content}</p>
-                    </div>
-                `;
-            });
-        }
-
-        function applyFilters() {
-            const stars = document.getElementById("filterStars").value;
-            const category = document.getElementById("filterCategory").value;
-            const filtered = reviews.filter(r => 
-                (stars === "" || r.stars == stars) && 
-                (category === "" || r.category === category)
-            );
-            renderReviews(filtered);
-        }
-
-        window.onload = () => renderReviews();
-    </script>
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 - Demo Recensioni</p>
+        </div>
+    </footer>
 </body>
 </html>
